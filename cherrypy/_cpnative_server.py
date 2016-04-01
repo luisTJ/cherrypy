@@ -24,7 +24,7 @@ class NativeGateway(wsgiserver.Gateway):
             remote = httputil.Host(remote[0], remote[1], "")
 
             scheme = req.scheme
-            sn = cherrypy.tree.script_name(req.uri or "/")
+            sn = cherrypy.tree.script_name(req.path or "/")
             if sn is None:
                 self.send_response('404 Not Found', [], [''])
             else:
